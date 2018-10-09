@@ -2,7 +2,7 @@
 # Copyright (C) 2008-2012 OpenWrt.org
 
 START=90
-CRON_FILE=/etc/crontabs/root
+#CRON_FILE=/etc/crontabs/root
 
 start_instance() {
 	local cfg="$1"
@@ -75,20 +75,3 @@ stop() {
     killall -9 supernode >/dev/null 2>&1
 }
 
-add_cron()
-{
-	local time_checkip=`uci get n2n_v2.@edge[0].time_checkip 2>/dev/null`
-	sed -i '/n2n_v2/d' $CRON_FILE
-	if [ $time_checkip -ne 60 ];then
-		echo "*/${time_checkip} * * * * /usr/share/n2n_v2/n2n_v2-watchdog" >> $CRON_FILE
-	else
-		echo "0 */1 * * * /usr/share/n2n_v2/n2n_v2-watchdog" >> $CRON_FILE
-	fi
-	crontab $CRON_FILE
-}
-
-del_cron()
-{
-	sed -i '/n2n_v2/d' $CRON_FILE
-	/etc/init.d/cron restart
-}

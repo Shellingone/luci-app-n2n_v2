@@ -2,9 +2,9 @@ local e=require"nixio.fs"
 
 local running=(luci.sys.call("pidof edge > /dev/null") == 0)
 if running then	
-	m = Map("n2n_v2", translate("N2N(V2)"), translate("<b><font color=green>EDGE运行中.</font></b>"))
+	m = Map("n2n_v2", translate("N2N VPN(V2)"), translate("<b><font color=green>EDGE运行中.</font></b>"))
 else
-	m = Map("n2n_v2", translate("N2N(V2)"), translate("<b><font color=red>EDGE停止运行.</font></b>"))
+	m = Map("n2n_v2", translate("N2N VPN(V2)"), translate("<b><font color=red>EDGE停止运行.</font></b>"))
 end
 
 s=m:section(TypedSection,"edge",translate("N2N Edge Settings"))

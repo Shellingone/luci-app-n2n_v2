@@ -6,9 +6,9 @@ function index()
 		return
 	end
 	
-	entry({"admin", "vpn"}, firstchild(), "N2N", 45).dependent = false
+	entry({"admin", "vpn"}, firstchild(), "VPN", 45).dependent = false
 	
 	local page
 
-	entry({"admin", "vpn", "n2n_v2"}, cbi("n2n_v2"), _("N2N(V2)"), 80).dependent=false
+	entry({"admin", "vpn", "n2n_v2"}, cbi("n2n_v2"), _("N2N VPN(V2)"), 80).dependent=false
 end
